@@ -1,0 +1,298 @@
+:root {
+  --main-text: #b589f9; /* Vibrant light purple for main text */
+  --alt-text: #9e6fe7; /* Slightly darker purple for alternative text */
+  --available: #b589f9; /* Vibrant light purple for available status */
+  --unavailable: #7a3dcf; /* Richer, modern darker purple for unavailable status */
+  --background: #000000; /* Black background for high contrast */
+}
+
+@font-face {
+  font-family: "Perfect DOS VGA 437";
+  src: url("/res/font/VGA.ttf");
+}
+
+@font-face {
+  font-family: "Zpix (最像素)";
+  src: url("/res/font/zpix.ttf");
+}
+
+::-moz-selection {
+  /* Code for Firefox */
+  color: var(--alt-text);
+  background: var(--background);
+}
+
+::selection {
+  color: var(--alt-text);
+  background: var(--background);
+}
+
+body {
+  background: var(--background);
+  overflow-x: hidden;
+  -ms-overflow-x: hidden;
+  cursor: none;
+}
+
+/* Styles for the dot that follows the mouse */
+#mouse-dot {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: #9e6fe7; /* Light purple for the dot */
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 10000;
+  transform: translate(-50%, -50%);
+}
+
+img,
+.ascii {
+  pointer-events: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -webkit-user-drag: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.ascii pre {
+  font-size: 1rem;
+}
+
+::-webkit-scrollbar {
+  width: 0;
+  background: transparent;
+}
+
+p,
+h1,
+h2,
+h4 {
+  color: var(--main-text);
+  overflow-wrap: normal;
+  word-wrap: normal;
+  -webkit-hyphens: auto;
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  hyphens: auto;
+}
+
+#cd {
+  color: var(--alt-text);
+}
+
+a {
+  text-decoration: none;
+}
+
+a:link,
+a:visited {
+  color: var(--alt-text);
+}
+
+a:hover,
+a:active {
+  color: var(--main-text);
+}
+
+.discords a:link,
+.discords a:visited {
+  color: var(--main-text);
+}
+
+.discords a:hover,
+.discords a:active {
+  color: var(--alt-text);
+}
+
+.watching {
+  color: dimgray;
+  padding: 50px;
+  font: 14px "Zpix (最像素)";
+  text-align: center;
+  margin: 0;
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  -ms-transform: translateX(-50%) translateY(-40%);
+  transform: translateX(-50%) translateY(-40%);
+}
+
+.status {
+  position: relative;
+  top: 25px;
+  left: 15px;
+}
+
+.notice {
+  color: var(--main-text);
+}
+
+.index {
+  padding: 20px;
+  font: 14px "Zpix (最像素)";
+  position: absolute;
+}
+
+.access-key {
+  color: var(--alt-text);
+  position: page;
+  bottom: 2%;
+  font-size: 18px;
+}
+
+.access-key input {
+  border: none;
+  background: var(--background);
+  color: var(--alt-text);
+  font-size: 18px;
+}
+
+.access-key input:focus {
+  outline: none;
+  font-size: 16px;
+}
+
+.ascii {
+  color: rgba(181, 137, 249, 0.5); /* Faded, modern light purple */
+  font-size: 4px;
+  position: fixed;
+  right: -300px;
+  top: 0;
+}
+
+@media (min-width: 992px) {
+  .ascii {
+    color: rgba(181, 137, 249, 0.5); /* Faded, modern light purple */
+    font-size: 5px;
+    position: fixed;
+    right: 0;
+    top: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .ascii {
+    color: rgba(181, 137, 249, 0.5); /* Faded, modern light purple */
+    font-size: 3px;
+    position: fixed;
+    right: -300px;
+    top: 0;
+  }
+}
+
+/* CRT filter */
+@keyframes flicker {
+  0% {
+    opacity: 0.27861;
+  }
+  5% {
+    opacity: 0.34769;
+  }
+  10% {
+    opacity: 0.23604;
+  }
+  15% {
+    opacity: 0.90626;
+  }
+  20% {
+    opacity: 0.18128;
+  }
+  25% {
+    opacity: 0.83891;
+  }
+  30% {
+    opacity: 0.65583;
+  }
+  35% {
+    opacity: 0.67807;
+  }
+  40% {
+    opacity: 0.26559;
+  }
+  45% {
+    opacity: 0.84693;
+  }
+  50% {
+    opacity: 0.96019;
+  }
+  55% {
+    opacity: 0.08594;
+  }
+  60% {
+    opacity: 0.20313;
+  }
+  65% {
+    opacity: 0.71988;
+  }
+  70% {
+    opacity: 0.53455;
+  }
+  75% {
+    opacity: 0.37288;
+  }
+  80% {
+    opacity: 0.71428;
+  }
+  85% {
+    opacity: 0.70419;
+  }
+  90% {
+    opacity: 0.7003;
+  }
+  95% {
+    opacity: 0.36108;
+  }
+  100% {
+    opacity: 0.24387;
+  }
+}
+
+.crt::after {
+  content: " ";
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.1); /* Softer overlay */
+  opacity: 0;
+  z-index: 2;
+  pointer-events: none;
+  animation: flicker 0.15s infinite;
+}
+
+.crt::before {
+  content: " ";
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: linear-gradient(rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
+    linear-gradient(
+      90deg,
+      rgba(128, 0, 128, 0.06),
+      rgba(150, 0, 255, 0.03),
+      rgba(85, 37, 130, 0.06)
+    );
+  z-index: 2;
+  background-size: 100% 2px, 3px 100%;
+  pointer-events: none;
+}
+
+.crt {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  cursor: url("/cur/purple.png"), crosshair; /* Custom purple cursor */
+}
+
+.error-message {
+  color: red;
+}
