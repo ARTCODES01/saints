@@ -3,7 +3,7 @@ const path = require("path");
 const fs = require("fs");
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000; // Use dynamic port for deployment
 
 // Set EJS as the templating engine
 app.set("view engine", "ejs");
@@ -50,6 +50,10 @@ app.post("/", (req, res) => {
 });
 
 // Start the server
+app.listen(port, '0.0.0.0', () => {
+  console.log(`Server running at http://localhost:${port}`);
+});
+
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
 });
