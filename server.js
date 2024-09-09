@@ -49,11 +49,7 @@ app.post("/", (req, res) => {
   }
 });
 
-// Start the server
+// Start the server - only call this once!
 app.listen(port, '0.0.0.0', () => {
-  console.log(`Server running at http://localhost:${port}`);
-});
-
-app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
 });
