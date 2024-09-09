@@ -1,9 +1,9 @@
 {
   "name": "views",
   "version": "1.0.0",
-  "main": "server.js", // Change to your server file
+  "main": "server.js", 
   "scripts": {
-    "start": "node server.js", // Start script for deployment
+    "start": "node server.js", 
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
