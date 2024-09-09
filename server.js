@@ -18,8 +18,13 @@ app.use(express.urlencoded({ extended: true }));
 
 // Function to read the local "database"
 const readDB = () => {
-  const data = fs.readFileSync("db.json", "utf-8");
-  return JSON.parse(data);
+  try {
+    const data = fs.readFileSync("db.json", "utf-8");
+    return JSON.parse(data);
+  } catch (error) {
+    console.error("Error reading the database file:", error);
+    return { users: [] }; // Return an empty users list if there's an error
+  }
 };
 
 // Route for the home page
@@ -49,7 +54,7 @@ app.post("/", (req, res) => {
   }
 });
 
-// Start the server - only call this once!
+// Start the server
 app.listen(port, '0.0.0.0', () => {
-  console.log(`Server running at http://localhost:${port}`);
+  console.log(`Server running at http://0.0.0.0:${port}`);
 });
